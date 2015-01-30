@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="de">
 <head>
 	<meta charset="UTF-8">
 	<title>Sharrre.com</title>
   <meta name="description" content="Sharrre" />
-  <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
-  <script src="jquery.sharrre-1.3.1.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/mootools/1.5.1/mootools-yui-compressed.js"></script>
+  <script src="mootools.sharrre-1.3.5.js"></script>
   <script>
-  $(function(){
-    $('#demo1').sharrre({
+  window.addEvent('domready',function() {
+    new Sharrre('demo1',{
       share: {
         googlePlus: true,
         facebook: true,
@@ -21,15 +21,15 @@
         twitter: {count: 'vertical'},
         delicious: {size: 'tall'}
       },
-      hover: function(api, options){
-        $(api.element).find('.buttons').show();      
+      onHover: function(api, options){
+        $(api.element).getElement('.buttons').show();      
       },
-      hide: function(api, options){
-        $(api.element).find('.buttons').hide();
+      onHide: function(api, options){
+        $(api.element).getElement('.buttons').hide();
       }
     });
     
-    $('#demo2').sharrre({
+    new Sharrre('demo2',{
       share: {
         googlePlus: true,
         facebook: true,
