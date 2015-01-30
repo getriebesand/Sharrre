@@ -1,5 +1,5 @@
 <?php
-  header('content-type: application/json');
+  header('content-type: application/json; charset=utf-8');
   //Sharrre by Julien Hany
   $json = array('url'=>'','count'=>0);
   $json['url'] = $_GET['url'];
@@ -27,7 +27,19 @@
 
     }
   }
-  echo str_replace('\\/','/',json_encode($json));
+
+  if(isset($_GET['callback']) && is_valid_callback($_GET['callback'])){
+    echo $_GET['callback'] . '('.str_replace('\\/','/',json_encode($json)).')';
+  }else{
+    echo str_replace('\\/','/',json_encode($json));
+  }
+
+  function is_valid_callback($subject)
+  {
+    $identifier_syntax = '/^[$_\p{L}][$_\p{L}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\x{200C}\x{200D}\.]*+$/u';
+
+    return preg_match($identifier_syntax, $subject);
+  }
   
   function parse($encUrl){
     $options = array(
