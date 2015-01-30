@@ -1,14 +1,14 @@
-jQuery Sharrre Plugin
+Sharrre Plugin Mootools Version
 ===
 
 Make your sharing widget!
-Sharrre is a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus (with PHP script) and more.
+Sharrre is originally a jQuery plugin that allows you to create nice widgets sharing for Facebook, Twitter, Google Plus (with PHP script) and more. This is the Mootools version
 More information on [Sharrre] (http://sharrre.com/#demos)
 
 Usage
 ===
 
-	$('#sharrre').sharrre({
+  new Sharrre('sharrre',{
     share: {
       googlePlus: true,
       facebook: true,
@@ -21,8 +21,8 @@ Example
 ===
     
   <div id="demo1" data-title="sharrre" data-url="http://sharrre.com" ></div>
-  $(document).ready(function(){
-    $('#demo1').sharrre({
+  window.addEvent('domready',function() {
+    new Sharrre('demo1',{
       share: {
         googlePlus: true,
         facebook: true,
@@ -35,11 +35,11 @@ Example
         twitter: {count: 'vertical'},
         delicious: {size: 'tall'}
       },
-      hover: function(api, options){
-        $(api.element).find('.buttons').show();      
+      onHover: function(api, options){
+        $(api.element).getElement('.buttons').show();      
       },
-      hide: function(api, options){
-        $(api.element).find('.buttons').hide();
+      onHide: function(api, options){
+        $(api.element).getElement('.buttons').hide();
       }
     });
   });
@@ -50,11 +50,14 @@ Example
 Dependencies
 ===
 
-jQuery 1.7
+Mootools 1.4
 
 Author
 ===
-
+jQuery Version
 - [Julien Hany](http://hany.fr)
 - [Twitter (@_JulienH)](http://twitter.com/_JulienH)
 - [Google+](http://plus.google.com/111637545317893682325)
+
+Mootools Version
+- [Sebastian]
