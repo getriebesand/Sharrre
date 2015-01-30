@@ -8,7 +8,7 @@ More information on [Sharrre] (http://sharrre.com/#demos)
 Usage
 ===
 
-  new Sharrre('sharrre',{
+	new Sharrre('sharrre',{
     share: {
       googlePlus: true,
       facebook: true,
