@@ -368,7 +368,6 @@ var Sharrre = new Class({
 
   loadButtons: function () {
     var self = this;
-    console.log('erstelle Buttons');
     this.buttons_el = new Element('div',{'class': 'buttons'}).inject(this.element);
     Object.each(self.options.share, function(val, name) {
       if(val == true){
@@ -387,11 +386,10 @@ var Sharrre = new Class({
     if(this.options.buttons[name].urlCount === true && this.options.buttons[name].url !== ''){
       url = self.urlJson[name].replace('{url}', this.options.buttons[name].url);
     }
-    console.log('name : ' + name + ' - url : '+url); //debug
+    //console.log('name : ' + name + ' - url : '+url); //debug
     if(url != '' && self.options.urlCurl !== ''){  //urlCurl = '' if you don't want to used PHP script but used social button
       new Request.JSONP({url: url,
         onSuccess: function(json){
-          console.log(json);
           if(json.hasOwnProperty('count')){  //GooglePlus, Stumbleupon, Twitter, Pinterest and Digg
             var temp = json.count + '';
             temp = temp.replace('\u00c2\u00a0', '');  //remove google plus special chars
@@ -414,7 +412,6 @@ var Sharrre = new Class({
         },
 
         onError: function() {
-          console.log('error');
           self.options.count[name] = 0;
           self.rendererPerso();
         }
